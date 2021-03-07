@@ -2,7 +2,9 @@ const db = require("../models");
 module.exports = function (app) {
 	// GET /api/workouts - get all workouts
 	app.get("/api/workouts", (req, res) => {
-		db.Workout.find({})
+		db.Workout.aggregate([
+			{ $addFields: { totalDuration: { $sum: "$exercises.duration" } } },
+		])
 			.then((dbWorkout) => res.json(dbWorkout))
 			.catch((err) => {
 				res.json(err);
@@ -17,9 +19,11 @@ module.exports = function (app) {
 			});
 	});
 	// POST /api/workouts - createWorkout
-	app.post("/api/workouts/", ({ body }, res) => {
-		db.Workout.insert(body)
-			.then((dbWorkout) => res.json(dbWorkout))
+	app.post("/api/workouts", (req, res) => {
+		db.Workout.create({})
+			.then((workout) => {
+				res.json(workout);
+			})
 			.catch((err) => {
 				res.json(err);
 			});
