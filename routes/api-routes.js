@@ -10,9 +10,9 @@ module.exports = function (app) {
 				res.json(err);
 			});
 	});
-	// PUT /api/workouts/ - addExercise
-	app.put("/api/workouts/", ({ body }, res) => {
-		db.Workout.insert(body)
+	// PUT /api/workouts/:id - addExercise
+	app.put("/api/workouts/", (req, res) => {
+		db.Workout.insert(req.body)
 			.then((dbWorkout) => res.json(dbWorkout))
 			.catch((err) => {
 				res.json(err);
@@ -20,9 +20,10 @@ module.exports = function (app) {
 	});
 	// POST /api/workouts - createWorkout
 	app.post("/api/workouts", (req, res) => {
-		db.Workout.create({})
-			.then((workout) => {
-				res.json(workout);
+		db.Workout.create(req.body)
+			.then((dbWorkout) => {
+				console.log(req.body);
+				res.json(dbWorkout);
 			})
 			.catch((err) => {
 				res.json(err);
