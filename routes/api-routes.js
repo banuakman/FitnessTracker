@@ -11,8 +11,12 @@ module.exports = function (app) {
 			});
 	});
 	// PUT /api/workouts/:id - addExercise
-	app.put("/api/workouts/", (req, res) => {
-		db.Workout.insert(req.body)
+	app.put("/api/workouts/:id", (req, res) => {
+		db.Workout.findByIdAndUpdate(
+			req.params.id,
+			{ $push: { exercises: req.body } },
+			{ new: true }
+		)
 			.then((dbWorkout) => res.json(dbWorkout))
 			.catch((err) => {
 				res.json(err);
