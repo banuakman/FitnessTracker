@@ -13,7 +13,7 @@
 
 ## Description
 
-The Fitness Tracket Application can be used to view, create and track daily workouts.
+The Fitness Tracker Application can be used to view, create and track daily workouts.
 We are able to log multiple exercises in a workout on a given day and also able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, we are able to track our distance traveled.
 The application’s front end is provided by Trilogy Education Services, LLC.
 
