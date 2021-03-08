@@ -40,7 +40,7 @@ https://newfitnesstracker.herokuapp.com/
 ## Usage
 
 The following image show the web application's appearance and functionality:
-![Screen shot of Fitness Tracker Application](./Assets/ScreenShot_fitnessTracker.gif)
+![Screen shot of Fitness Tracker Application](./public/assets/ScreenShot_fitnessTracker.gif)
 
 ```
 When the user loads the page, they are given the option to create a new workout or continue with their last workout.
